@@ -1,0 +1,63 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis of Political Discourse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-6">
+    <div class="container mx-auto max-w-2xl bg-white shadow-md rounded-lg p-8">
+        <h1 class="text-2xl font-semibold text-blue-700 text-center mb-6">Evaluate Text Sentiment</h1>
+        <p class="text-gray-700 mb-4">
+            Enter text below to analyze its sentiment.
+        </p>
+
+        <div class="mb-4">
+            <textarea id="textInput" placeholder="Enter text here..." class="w-full p-4 border border-gray-300 rounded-md focus:ring focus:ring-blue-200 focus:border-blue-300"></textarea>
+        </div>
+
+        <div class="mb-4">
+            <button id="analyzeButton" class="bg-blue-500 hover:bg-blue-700 text-white font-semibold rounded-md py-2 px-4 focus:outline-none focus:shadow-outline">Analyze Sentiment</button>
+        </div>
+
+        <div id="result" class="mt-6 p-4 bg-gray-50 rounded-md border border-gray-200">
+            <p class="text-lg font-medium text-gray-800">Sentiment: <span id="sentimentResult"></span></p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('analyzeButton').addEventListener('click', function() {
+            const text = document.getElementById('textInput').value;
+            const sentimentResultSpan = document.getElementById('sentimentResult');
+
+            // Basic sentiment analysis logic (replace with actual NLP)
+            let sentiment = "neutral";
+            if (text.toLowerCase().includes("good") || text.toLowerCase().includes("great") || text.toLowerCase().includes("happy")) {
+                sentiment = "positive";
+            } else if (text.toLowerCase().includes("bad") || text.toLowerCase().includes("terrible") || text.toLowerCase().includes("sad")) {
+                sentiment = "negative";
+            } else {
+                sentiment = "neutral";
+            }
+
+            sentimentResultSpan.textContent = sentiment;
+            if (sentiment === "positive") {
+                sentimentResultSpan.style.color = "green";
+            } else if (sentiment === "negative") {
+                sentimentResultSpan.style.color = "red";
+            } else {
+                sentimentResultSpan.style.color = "gray";
+            }
+
+        });
+    </script>
+</body>
+</html>
